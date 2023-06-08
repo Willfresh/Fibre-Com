@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "516556205461",
+    "project_id": "fibre-bd-com-e7486",
+    "storage_bucket": "fibre-bd-com-e7486.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516556205461:android:802d92370df85566f25a9c",
+        "android_client_info": {
+          "package_name": "com.example.fibre_com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "516556205461-9rao5ah04fe8t3pjkj0afacqgmpg0ae9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHU6MGS9SvHM81CcLnapEP3DMR2ZEIHiE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "516556205461-2u1fkf99t3lgjhfut0lftmlpf5agbd6e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
