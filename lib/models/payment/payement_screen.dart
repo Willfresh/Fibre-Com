@@ -273,12 +273,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         ),
                       SizedBox(height: 80),
                       Padding(
-                        padding: EdgeInsets.only(left: 40, right: 40, bottom: 20),
+                        padding: EdgeInsets.only( bottom: 20),
                         child: ElevatedButton(
                           onPressed: () {
-                            // Action du bouton "PAYER"
-                            print('Montant : $enteredAmount FCFA');
-
                             // Convertir le montant en FCFA en montant en USD
                             double amountInUSD = double.parse(enteredAmount) / 500;
 
@@ -340,7 +337,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            minimumSize: Size(double.infinity, 50),
+                            minimumSize: Size(120, 50),
                             primary: kPrimaryColor,
                           ),
                           child: Text('PAYER $enteredAmount FCFA '),

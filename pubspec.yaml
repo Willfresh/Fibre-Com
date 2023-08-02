@@ -43,6 +43,15 @@ dependencies:
   permission_handler: ^10.2.0
   animations: ^2.0.7
   flutter_datetime_picker_plus: ^2.0.1
+  rive: ^0.9.1
+  line_awesome_flutter: ^2.0.0
+  flutter_screenutil: ^5.8.4
+  animated_theme_switcher: ^2.0.8
+  theme_provider: ^0.6.0
+  easy_dynamic_theme: ^2.3.1
+  intl: ^0.18.1
+  firebase_messaging: ^14.6.4
+  flutter_local_notifications: ^14.1.1
 
 
 
@@ -50,7 +59,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   firebase_core: ^2.9.0
-  firebase_core_web: ^2.3.0
+  firebase_core_web: ^2.6.0
 
 dev_dependencies:
   flutter_test:
@@ -76,37 +85,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    #- assets/icons/notification-svgrepo-com.svg
-    #- assets/icons/settings-svgrepo-com.svg
-    #- assets/icons/help-circle-svgrepo-com.svg
-    #- assets/icons/logout-svgrepo-com.svg
-    #- assets/icons/wallet-banknotes-svgrepo-com.svg
-    #- assets/icons/arrow-left-svgrepo-com.svg
-    #- assets/icons/notification-svgrepo-com.svg
-     - assets/images/Happy Bunch - Chat (1).png
-     - assets/images/Stuck at Home - Working from Home.png
-     - assets/images/Stuck at Home - Searching.png
-     - assets/images/Stuck at Home - Happy Place.png
-     - assets/images/pinture(3).png
-     - assets/images/pngwing.com (1).png
-     - assets/images/istockphoto-1316420668-612x612.jpg
-     - assets/images/icon.png
-     - assets/images/profil.png
-     - assets/images/girlyellow.jpg
-     - assets/images/asian-lady.jpg
-     - assets/images/wifehusband.png
-     - assets/images/full-shot-smiley-woman-holding-laptop.jpg
-     - assets/images/group-afro-americans-working-together.jpg
-     - assets/images/entreprise.jpg
-     - assets/images/diverse-team.jpg
-     - assets/images/cardcredit.png
-     - assets/images/Cyber.png
-     - assets/images/manpc.png
-     - assets/icons/arrow-left-svgrepo-com.svg
-     - assets/images/cardcredit.png
-     - assets/images/workplace.png
-     - assets/images/inscrip.png
+     - assets/images/
      - assets/icons/
+     - assets/riveAssets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

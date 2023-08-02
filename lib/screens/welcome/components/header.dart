@@ -43,11 +43,11 @@ class Header extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(width: 110),
+                      SizedBox(width: 90),
                       GestureDetector(
                         onTap: ()=>Navigator.pushNamed(context, ProfileScreen.routeName),
                         child: CircleAvatar(
-                          backgroundImage: AssetImage('assets/images/girlyellow.jpg'),
+                          backgroundImage: AssetImage('assets/images/profile-icon-blank-profile.png'),
                           radius: 25,
                         ),
                       ),
@@ -65,18 +65,22 @@ class Header extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 16),
                     child: TextFormField(
                       decoration: InputDecoration(
-                        labelText: 'Recherche',
-                        labelStyle: TextStyle(
+                        hintText: 'Recherche',
+                        hintStyle: TextStyle(
                           color: Colors.white,
-                          fontSize: 14,  // Ajout de la taille de police pour le label
+                          fontSize: 14,
                         ),
                         enabledBorder: InputBorder.none,
                         focusedBorder: InputBorder.none,
-                        contentPadding: EdgeInsets.symmetric(vertical: 8),  // Réduction de l'espacement vertical
+                        contentPadding: EdgeInsets.symmetric(vertical: 8),
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: Colors.white,
+                        ),
                       ),
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 16,  // Ajout de la taille de police pour le texte saisi
+                        fontSize: 16,
                       ),
                     ),
                   ),

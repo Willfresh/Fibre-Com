@@ -42,24 +42,22 @@ class Client {
     return {
       'nom': nom,
       'prenom': prenom,
-      'nationalité': nationalite,
+      'nationalite': nationalite,
       'dateNaissance': dateNaissance,
-      "domaine d'activité" : domaineActivite,
-      'numéro de téléphone': numeroTelephone,
+      "domaineActivite" : domaineActivite,
+      'numeroTelephone': numeroTelephone,
       'email' : email,
-      'pièce d\'identité': piecIdentite,
-      "numéro de la pièce didentité": numeroPieceIdentite,
-      "date pièce d'identité": datePieceIdentite,
-      "quartier de résidence": quartier,
+      'pieceIdentite': piecIdentite,
+      "numeroPieceIdentite": numeroPieceIdentite,
+      "datePieceIdentite": datePieceIdentite,
+      "quartierResidence": quartier,
       "ville": ville,
       "offre": offre,
-      "mode de paiement": modePaiement,
-      "engagemennt de paiement": engaPaiement,
+      "modePaiement": modePaiement,
+      "engagementPaiement": engaPaiement,
       "debit": selectedDebi,
-      "localisation":{
-        "latitude": latitude,
-        "longitude": longitude,
-      }
+      "latitude": latitude,
+      "longitude": longitude,
     };
   }
 }

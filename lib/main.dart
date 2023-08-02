@@ -1,5 +1,8 @@
 import 'dart:async';
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
+import 'package:fibre_com/screens/constants.dart';
 import 'package:fibre_com/screens/forgot_password/forgot_password_screen.dart';
+import 'package:fibre_com/screens/formulaire/components/derangement.dart';
 import 'package:fibre_com/screens/formulaire/components/mapScreen.dart';
 import 'package:fibre_com/screens/formulaire/components/offre_client.dart';
 import 'package:fibre_com/screens/formulaire/formulaire_screen.dart';
@@ -16,15 +19,19 @@ import 'package:fibre_com/screens/welcome/components/resiDetail/Gold.dart';
 import 'package:fibre_com/screens/welcome/components/resiDetail/Platinium.dart';
 import 'package:fibre_com/screens/welcome/components/resiDetail/silver.dart';
 import 'package:fibre_com/screens/welcome/welcome_screen.dart';
+import 'package:fibre_com/service/FirebaseMessagingService.dart';
+import 'package:fibre_com/theme/theme_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:fibre_com/screens/theme.dart';
+import 'package:fibre_com/theme/theme_constant.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'models/client.dart';
 import 'components/succes_screen.dart';
 import 'firebase_options.dart';
 import 'models/payment/payement_screen.dart';
+import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 
 void main() async {
@@ -32,58 +39,81 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
     );
-  runApp(const MyApp(),);
+
+  runApp(EasyDynamicThemeWidget(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key});
+//ThemeManager _themeManager= ThemeManager();
+
+class MyApp extends StatefulWidget {
+
+  MyApp({Key? key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+
+}
+
+class _MyAppState extends State<MyApp> {
+  final FirebaseMessagingService _firebaseMessagingService = FirebaseMessagingService();
+  @override
+  void initState() {
+    super.initState();
+    _firebaseMessagingService.initialize(context);
+  }
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Fibre Com',
-      theme: theme(),
-      home: WaitingScreen(),
-      routes: {
-        //'/map': (context) => MapScreen(),
-        '/offre': (context) => OffreClient(client: Client(
-            nom: 'nom',
-            prenom: 'prenom',
-            nationalite: 'nationalité',
-            dateNaissance: 'date de naissance',
-            domaineActivite: "domaine d'activité",
-            numeroTelephone: 'numéro de téléphone',
-            email: 'email',
-            piecIdentite: 'pièce d\'identité',
-            numeroPieceIdentite: "numéro de la pièce didentité",
-            datePieceIdentite: "date pièce d'identité",
-            quartier: 'quartier de résidence',
-            ville: 'ville',
-            offre: 'offre',
-            modePaiement: 'mode de paiement',
-            engaPaiement: 'engagement de paiement',
-            selectedDebi: 'debit',
-            latitude: 'latitude',
-            longitude: 'longitude')),
-        '/welcome': (context) => WelcomeScreen(),
-        '/payment': (context) => PaymentScreen(),
-        '/gold': (context) => GoldScreen(),
-        '/silver': (context) => SilverScreen(),
-        '/platinium': (context) => PlatiniumScreen(),
-        '/spllash': (context) => SplashScreen(),
-        '/pro': (context) => ProScreen(),
-        '/prosmall': (context) => ProSmallScreen(),
-        '/proplus': (context) => ProPlusScreen(),
-        '/sign_in': (context) => SignInScreen(),
-        '/sign_up': (context) => SignUpScreen(),
-        '/procyber': (context) => ProCyberScreen(),
-        '/success': (context) => SuccessScreen(),
-        '/profile': (context) => ProfileScreen(),
-        '/formulaire' : (context) => FormulaireScreen(),
-        '/notification' : (context) => NotificationScreen(),
-        '/forgot_password': (context) => ForgotPasswordScreen()
-      },
+    return Builder(
+        builder:(context){
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Fibre Com',
+            theme: theme(),
+            //darkTheme: darkTheme,
+            //themeMode: _themeManager.themeMode,
+            home: WaitingScreen(),
+            routes: {
+              //'/map': (context) => MapScreen(),
+              '/offre': (context) => OffreClient(client: Client(
+                  nom: 'nom',
+                  prenom: 'prenom',
+                  nationalite: 'nationalité',
+                  dateNaissance: 'date de naissance',
+                  domaineActivite: "domaine d'activité",
+                  numeroTelephone: 'numéro de téléphone',
+                  email: 'email',
+                  piecIdentite: 'pièce d\'identité',
+                  numeroPieceIdentite: "numéro de la pièce didentité",
+                  datePieceIdentite: "date pièce d'identité",
+                  quartier: 'quartier de résidence',
+                  ville: 'ville',
+                  offre: 'offre',
+                  modePaiement: 'mode de paiement',
+                  engaPaiement: 'engagement de paiement',
+                  selectedDebi: 'debit',
+                  latitude: 'latitude',
+                  longitude: 'longitude')),
+              '/welcome': (context) => WelcomeScreen(),
+              '/payment': (context) => PaymentScreen(),
+              '/gold': (context) => GoldScreen(),
+              '/silver': (context) => SilverScreen(),
+              '/platinium': (context) => PlatiniumScreen(),
+              '/spllash': (context) => SplashScreen(),
+              '/pro': (context) => ProScreen(),
+              '/prosmall': (context) => ProSmallScreen(),
+              '/proplus': (context) => ProPlusScreen(),
+              '/sign_in': (context) => SignInScreen(),
+              '/sign_up': (context) => SignUpScreen(),
+              '/procyber': (context) => ProCyberScreen(),
+              '/success': (context) => SuccessScreen(),
+              '/profile': (context) => ProfileScreen(),
+              '/derangement': (context) => Derangement(),
+              '/formulaire' : (context) => FormulaireScreen(),
+              '/notification' : (context) => NotificationScreen(),
+              '/forgot_password': (context) => ForgotPasswordScreen()
+            },
+          );
+        }
     );
   }
 }

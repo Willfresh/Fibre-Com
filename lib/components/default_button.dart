@@ -11,24 +11,22 @@ class DefaultButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        width: getProportionateScreenWidth(510),
-        height: getProportionateScreenHeight(56),
-        child: ElevatedButton(
-          onPressed: press as void Function()?,
-          style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            primary: kPrimaryColor,
-          ),
-          child: Text(
-            text,
-            style: TextStyle(
-                fontSize: getProportionateScreenWidth(38),
-                color: Colors.white),
-          ),
+    return ElevatedButton(
+      onPressed: press as void Function()?,
+      style: ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        primary: kPrimaryColor,
+        minimumSize: Size(130, 50),
+      ),
+      child: Text(
+        text,
+        style: TextStyle(
+            fontSize: getProportionateScreenWidth(38),
+            color: Colors.white),
+      ),
 
-        ));
+    );
   }
 }

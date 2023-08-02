@@ -13,31 +13,18 @@ class WelcomeScreen extends StatefulWidget{
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen>{
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      //0xFFFFFA05
       backgroundColor: Colors.grey[100],
-      /*appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        centerTitle: true,
-        title: Text(
-          "FIBRE COM",
-          //style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.account_circle),
-            onPressed: () => Navigator.pushNamed(context, ProfileScreen.routeName),
-          ),
-        ],
-      ),*/
       body: Body(),
       bottomNavigationBar: NavigationBar(context),
     );
 
   }
+
 }
 
 

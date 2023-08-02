@@ -10,6 +10,8 @@ import '../../size_config.dart';
 
 
 
+
+
 class CoordonneesClient extends StatefulWidget {
   @override
   _CoordonneesClientState createState() => _CoordonneesClientState();
@@ -31,18 +33,18 @@ class _CoordonneesClientState extends State<CoordonneesClient> {
       nom: 'nom',
       prenom: 'prenom',
       nationalite: 'nationalité',
-      dateNaissance: 'date de naissance',
-      domaineActivite: "domaine d'activité",
-      numeroTelephone: 'numéro de téléphone',
+      dateNaissance: 'dateNaissance',
+      domaineActivite: "domaineActivite",
+      numeroTelephone: 'numeroTelephone',
       email: 'email',
-      piecIdentite: 'pièce d\'identité',
-      numeroPieceIdentite: "numéro de la pièce didentité",
-      datePieceIdentite: "date pièce d'identité",
-      quartier: 'quartier de résidence',
+      piecIdentite: 'pieceIdentite',
+      numeroPieceIdentite: "numeroPieceIdentite",
+      datePieceIdentite: "datePieceIdentite",
+      quartier: 'quartierResidence',
       ville: 'ville',
       offre: 'offre',
-      modePaiement: 'mode de paiement',
-      engaPaiement: 'engagement de paiement',
+      modePaiement: 'modePaiement',
+      engaPaiement: 'engagementPaiement',
       selectedDebi: 'debit',
       latitude: 'latitude',
       longitude: 'longitude');
@@ -471,7 +473,7 @@ class _CoordonneesClientState extends State<CoordonneesClient> {
                     controller: _carteIdentiteDateController,
                     style: TextStyle(color: Colors.black),
                     decoration: InputDecoration(
-                      labelText: 'Date de naissance',
+                      labelText: 'Date de delivrement',
                       //labelStyle: TextStyle(color: Colors.black),
                       suffixIcon: IconButton(
                         icon: Icon(Icons.calendar_today, /*color: Colors.black*/),

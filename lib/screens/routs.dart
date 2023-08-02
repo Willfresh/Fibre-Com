@@ -17,9 +17,12 @@ import '../components/succes_screen.dart';
 import '../models/payment/payement_screen.dart';
 import 'forgot_password/forgot_password_screen.dart';
 import 'package:fibre_com/screens/welcome/welcome_screen.dart';
+import 'formulaire/components/derangement.dart';
 import 'formulaire/components/mapScreen.dart';
 import 'notifications/notifications_screen.dart';
 import 'formulaire/formulaire_screen.dart';
+import 'package:fibre_com/theme/theme_manager.dart';
+
 
 final Map<String , WidgetBuilder> routes ={
   OffreClient.routeName: (context) => OffreClient(client: Client(nom: 'nom',
@@ -56,6 +59,7 @@ final Map<String , WidgetBuilder> routes ={
   ProSmallScreen.routeName: (context) => ProSmallScreen(),
   WelcomeScreen.routeName: (context) => WelcomeScreen(),
   FormulaireScreen.routeName: (context) => FormulaireScreen(),
+  Derangement.routeName: (context) => Derangement(),
   NotificationScreen.routeName: (context) => NotificationScreen(),
   ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
 };

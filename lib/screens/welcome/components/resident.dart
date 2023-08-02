@@ -61,7 +61,7 @@ class _ResidentState extends State<Resident> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return SizedBox(
-      height :230,
+      height :232,
       child: PageView.builder(
           onPageChanged: (value){
             setState(() {
@@ -84,20 +84,20 @@ class _ResidentState extends State<Resident> {
         double value = 0;
         if (_pageController.position.haveDimensions) {
           value = index - (_pageController.page ?? 0);
-          value = (value * 0.042).clamp(-1, 1);
+          value = (value * 0.04).clamp(-1, 1);
         }
         return Transform.rotate(
           angle: math.pi * value,
           child: Container(
-            height: 230,
-            width: 220,
+            height: 232,
+            width: 240,
             margin: EdgeInsets.only(
-              left: index == 0 ? 20 : 40,
-              right: index == residPic.length - 1 ? 30 : 0,
+              left: index == 0 ? 18 : 38,
+              right: index == residPic.length - 1 ? 28 : 0,
               //top: 10,
               bottom:2,
             ),
-            padding: const EdgeInsets.symmetric(horizontal: 20,vertical:10),
+            padding: const EdgeInsets.symmetric(horizontal: 10,vertical:10),
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(

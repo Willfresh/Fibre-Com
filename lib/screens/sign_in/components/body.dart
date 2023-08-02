@@ -6,7 +6,7 @@ import 'package:fibre_com/screens/size_config.dart';
 import 'package:flutter/material.dart';
 import '../../../components/no_account_text.dart';
 import '../../../components/social_card.dart';
-import '../../services/auth.dart';
+import '../../../service/auth.dart';
 
 class Body extends StatefulWidget{
   @override
@@ -27,7 +27,7 @@ class _BodyState extends State<Body> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(height: SizeConfig.screenHeight! * 0.04,),
+                  //SizedBox(height: SizeConfig.screenHeight! * 0.04,),
                   Container(
                     child: Image.asset(
                       'assets/images/workplace.png',
@@ -54,22 +54,6 @@ class _BodyState extends State<Body> {
                         icon: 'assets/icons/google-color-svgrepo-com.svg',
                         press: (){},
                         inLogin: inLogin,
-                        /*press: () {
-                          setState(() {
-                            inLogin = true;
-                          });
-                          AuthService().signInWithGoogle().then((result) {
-                            setState(() {
-                              inLogin = false;
-                            });
-                          }).catchError((error) {
-                            setState(() {
-                              inLogin = false;
-                            });
-                            // Gérer l'erreur ici
-                          });
-                        },
-                        inLogin: inLogin, */// Passer inLogin ici
                       ),
                       SocialCard(
                         icon: "assets/icons/twitter-1-svgrepo-com.svg",
@@ -81,9 +65,9 @@ class _BodyState extends State<Body> {
                         inLogin: inLogin,)
                     ],
                   ),
-                  SizedBox(height: getProportionateScreenHeight(40),),
+                  SizedBox(height: getProportionateScreenHeight(30),),
                   NoAcountText(),
-                  SizedBox(height: getProportionateScreenHeight(10),),
+                  SizedBox(height: getProportionateScreenHeight(20),),
                 ],
               ),
             ),

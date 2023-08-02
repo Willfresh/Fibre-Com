@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'constants.dart ';
+import '../screens/constants.dart ';
 
 ThemeData theme(){
   return ThemeData(
@@ -14,6 +14,27 @@ ThemeData theme(){
   );
 }
 
+/*ThemeData lightTheme = ThemeData(
+    primarySwatch: Colors.red,
+    fontFamily: "Merriweather",
+  brightness: Brightness.light
+
+);*/
+
+/*ThemeData darkTheme = ThemeData(
+    primarySwatch: Colors.red,
+    fontFamily: "Merriweather",
+    brightness: Brightness.dark
+);
+final darkThemeData = ThemeData.dark().copyWith(
+    brightness: Brightness.light
+  // Personnalisez les propriétés du thème sombre si nécessaire
+);
+
+final lightThemeData = ThemeData.light().copyWith(
+    brightness: Brightness.dark
+  // Personnalisez les propriétés du thème clair si nécessaire
+);*/
 
 /*TextTheme textTheme() {
   return TextTheme(

@@ -7,7 +7,7 @@ import '../../../components/form_error.dart';
 import '../../../components/no_account_text.dart';
 import '../../../components/social_card.dart';
 import '../../constants.dart';
-import '../../services/auth.dart';
+import '../../../service/auth.dart';
 import '../../size_config.dart';
 
 class Body extends StatefulWidget{

@@ -1,40 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-
+import '../../models/NotificationModel.dart';
 import '../formulaire/formulaire_screen.dart';
 import '../welcome/welcome_screen.dart';
 
 class NotificationScreen extends StatefulWidget {
   static String routeName = "/notification";
+
   @override
   State<NotificationScreen> createState() => _NotificationScreenState();
 }
 
 class _NotificationScreenState extends State<NotificationScreen> {
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Notifications",
-          style: TextStyle(
-            fontSize: 15,
-            color: Colors.white,
+      body: Container(
+        child: Padding(
+          padding: EdgeInsets.only(top: 55,bottom: 5,right: 20,left: 20),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(Icons.arrow_back_ios_sharp),
+                  Text(
+                    "Notifications",
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.black,
+                    ),
+                  ),
+                  Icon(Icons.more_vert)
+                ],
+              ),
+              Center(
+                child: Text(
+                  "Pas de notifications",
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ],
           ),
-        ),
-        centerTitle: true,
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.red, Colors.white],
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-            ),
-          ),
-        ),
-      ),
-      body: Center(
-        child: Text("Pas de notifications"),
+        )
       ),
       bottomNavigationBar: NavigationBar(context),
     );

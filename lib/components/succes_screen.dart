@@ -40,7 +40,7 @@ class _SuccessScreenState extends State<SuccessScreen> with SingleTickerProvider
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.grey[200],
       body: Stack(
         children: [
           Positioned(
@@ -51,7 +51,7 @@ class _SuccessScreenState extends State<SuccessScreen> with SingleTickerProvider
 
                     decoration: BoxDecoration(
 
-                      color: Colors.yellow.shade400,
+                      color: Colors.white,
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(130),
                         bottomRight: Radius.circular(130),
@@ -65,7 +65,7 @@ class _SuccessScreenState extends State<SuccessScreen> with SingleTickerProvider
                           height: 200,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Colors.white,
+                            color: Colors.yellow.shade300,
                           ),
                           child: Icon(
                             Icons.check,

@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fibre_com/screens/sign_in/sign_in_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../constants.dart ';
 import '../../size_config.dart';
 import 'package:location/location.dart';
@@ -29,13 +30,13 @@ class _OffreClientState extends State<OffreClient> {
   String _modePay = '';
   String _engaPay = '';
   final _debitList = [
-    {"label": "50Mb/s", "value": "15"},
-    {"label": "100Mb/s", "value": "20"},
-    {"label": "200Mb/s", "value": "30"},
-    {"label": "250Mb/s", "value": "50"},
-    {"label": "300Mb/s", "value": "70"},
-    {"label": "350Mb/s", "value": "70"},
-    {"label": "400Mb/s", "value": "70"}
+    {"label": "50Mb/s", "value": "50"},
+    {"label": "100Mb/s", "value": "100"},
+    {"label": "200Mb/s", "value": "200"},
+    {"label": "250Mb/s", "value": "250"},
+    {"label": "300Mb/s", "value": "300"},
+    {"label": "350Mb/s", "value": "350"},
+    {"label": "400Mb/s", "value": "400"}
   ];
   String? _selectedDebi;
   final _location = Location();
@@ -76,6 +77,23 @@ class _OffreClientState extends State<OffreClient> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
+              Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.08,
+                    left: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context); // Revenir à l'écran précédent
+                    },
+                    child: SvgPicture.asset(
+                      'assets/icons/arrow-left-svgrepo-com.svg',
+                    ),
+                  ),
+                ),
+              ),
               SizedBox(height: SizeConfig.screenHeight! * 0.02,),
               Text("Offre et paiement",
                 style: TextStyle(
@@ -175,7 +193,6 @@ class _OffreClientState extends State<OffreClient> {
                       ],
                     ),
                     SizedBox(height: 20),
-                    Text('Offre  souscrite'),
                     Row(
                       children: [
                         Expanded(
@@ -367,7 +384,7 @@ class _OffreClientState extends State<OffreClient> {
                     ),
                     SizedBox(height: getProportionateScreenHeight(50),),
                     Center(
-                        child: Text("En appuyant sur Souscrire vous acceptez les termes et conditions d'utilisation")),
+                        child: Text("En appuyant sur Souscrire vous acceptez les termes et conditions d'utilisation",textAlign: TextAlign.center,)),
                     SizedBox(height: getProportionateScreenHeight(3),),
                     Padding(
                       padding: EdgeInsets.only(left:70,right:70,bottom: 20),
@@ -394,7 +411,10 @@ class _OffreClientState extends State<OffreClient> {
 
                             if (user != null) {
                               final docRef = firestore.collection('clients').doc(user.uid);
-                              await docRef.set(widget.client.toMap());
+                              Map<String, dynamic> clientData = widget.client.toMap();
+                              clientData['infoClienId'] = user.uid; // Ajouter l'ID de l'utilisateur ici
+
+                              await docRef.set(clientData);
                             }
                             setState((){
                               isLoading = false;

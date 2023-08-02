@@ -1,4 +1,4 @@
-import 'package:fibre_com/screens/services/auth.dart';
+import 'package:fibre_com/service/auth.dart';
 import 'package:flutter/material.dart';
 import '../../../components/custom_suffix_icon.dart';
 import '../../../components/default_button.dart';
@@ -46,7 +46,7 @@ class _SignFormState extends State<SignForm>{
             SizedBox(height: getProportionateScreenHeight(30)),
             buildPasswordFormField(),
             SizedBox(height: getProportionateScreenHeight(30)),
-            Row(
+            /*Row(
               children: [
                 /*Checkbox(
                     value: remember,
@@ -65,7 +65,7 @@ class _SignFormState extends State<SignForm>{
                         color: kPrimaryColor),),
                 )
               ],
-            ),
+            ),*/
             //FormError(errors: errors),
             SizedBox(height: getProportionateScreenHeight(30)),
 

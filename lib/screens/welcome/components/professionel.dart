@@ -42,7 +42,7 @@ class _ProfessionelState extends State<Professionel> {
   void initState() {
     super.initState();
     _pageController = PageController(
-      viewportFraction: 0.8,
+      viewportFraction: 0.7,
       initialPage: initialPage,
     );
   }
@@ -64,7 +64,7 @@ class _ProfessionelState extends State<Professionel> {
           },
           controller: _pageController,
           itemCount:residPic.length,
-          physics: ClampingScrollPhysics(),
+          physics: BouncingScrollPhysics(),
           itemBuilder: (context, index) => buildContainerSlider(index)
       ),
     );
@@ -75,28 +75,23 @@ class _ProfessionelState extends State<Professionel> {
     return AnimatedBuilder(
       animation: _pageController,
       builder: (context, child) {
-        double value = 0;
+        double value = 1;
         if (_pageController.position.haveDimensions) {
           value = index - _pageController.page!;
-          value = (1 - (value.abs() * 0.2)).clamp(0.8, 1.0);
+          value = (1-(value.abs() * 0.4)).clamp(0.8, 1.0);
 
-          // Afficher initialement le premier élément avec une taille plus grande
-          if (index == 0) {
-            value = (1 - _pageController.page!).clamp(0.8, 1.0);
-          }
         }
-
         return Transform.scale(
           scale: value,
           child: Container(
             height: 230,
-            width: 220,
+            width: 250,
             margin: EdgeInsets.only(
-              left: index == 0 ? 20 : 10,
-              right: index == residPic.length - 1 ? 30 : 0,
+              left: index == 0 ? 10 : 10,
+              right: index == residPic.length - 1 ? 10 : 0,
               bottom:2,
             ),
-            padding: const EdgeInsets.symmetric(horizontal: 20,vertical:10),
+            padding: const EdgeInsets.symmetric(horizontal: 10,vertical:10),
             decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
@@ -105,8 +100,8 @@ class _ProfessionelState extends State<Professionel> {
                       offset: Offset(0, 10.0)
                   )
                 ],
-              borderRadius: BorderRadius.circular(11),
-              color: Colors.white//.withOpacity(0.08),
+                borderRadius: BorderRadius.circular(11),
+                color: Colors.white//.withOpacity(0.08),
             ),
             child: Column(
               children: [
@@ -135,35 +130,37 @@ class _ProfessionelState extends State<Professionel> {
                   ),
                 ),
                 SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      height: 21,
-                      decoration: BoxDecoration(
-                        /*boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              blurRadius: 3.0,
-                              offset: Offset(0, 3.0)
-                          )
-                        ],*/
-                        borderRadius: BorderRadius.circular(8),
-                        color: containerColors[index % containerColors.length],
-                      ),
-                      padding: EdgeInsets.symmetric(horizontal: 12),
-                      child: Center(
-                        child: Text(
-                          residPicName[index],
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        height: 21,
+                        decoration: BoxDecoration(
+                          /*boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                blurRadius: 3.0,
+                                offset: Offset(0, 3.0)
+                            )
+                          ],*/
+                          borderRadius: BorderRadius.circular(8),
+                          color: containerColors[index % containerColors.length],
+                        ),
+                        padding: EdgeInsets.symmetric(horizontal: 12),
+                        child: Center(
+                          child: Text(
+                            residPicName[index],
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ),
-                    ),
-                    Icon(
-                      Icons.favorite_outline,
-                      color: favoriteIconColors[index],
-                    )
-                  ],
+                      Icon(
+                        Icons.favorite_outline,
+                        color: favoriteIconColors[index],
+                      )
+                    ],
+                  ),
                 ),
                 SizedBox(height: 6),
                 Text(

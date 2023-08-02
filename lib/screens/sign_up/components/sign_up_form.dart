@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../services/auth.dart';
+import '../../../service/FirebaseMessagingService.dart';
+import '../../../service/auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/custom_suffix_icon.dart';
@@ -10,6 +11,7 @@ import '../../../components/form_error.dart';
 import '../../constants.dart';
 import '../../size_config.dart';
 import '../../welcome/welcome_screen.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 class SignUpForm extends StatefulWidget{
 
@@ -31,13 +33,17 @@ class _SignUpFormState extends State<SignUpForm>{
     UserCredential? userCredential = await AuthService().registerWithEmailAndPassword(email, password);
 
     if (userCredential != null) {
-      // Enregistrement des autres données dans la collection "users"
+      final userId = userCredential.user!.uid;
+      // Enregistrer les autres données dans la collection "users"
       await FirebaseFirestore.instance.collection('users').doc(userCredential.user!.uid).set({
+        'userId':userId,
         'nom': _nomController.text,
         'prenom': _prenomController.text,
         'email': email,
         'phoneNumber': _phoneNumberController.text,
       });
+      // Initialiser Firebase Messaging Service
+      FirebaseMessagingService().initialize(context);
 
       // Redirection vers une autre page après l'inscription réussie
       Navigator.push(
@@ -55,6 +61,10 @@ class _SignUpFormState extends State<SignUpForm>{
       _loading = false;
     });
   }
+
+
+
+
 
   final _formKey = GlobalKey<FormState>();
   bool _isPasswordVisible = false; // Indicateur de visibilité du mot de

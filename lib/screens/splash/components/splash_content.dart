@@ -15,9 +15,8 @@ class SplashContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
-
       Padding(
-        padding:  EdgeInsets.only(top: 20.0),
+        padding: EdgeInsets.only(top: 20.0),
         child: Text(
           "FIBRE COM",
           style: TextStyle(
@@ -29,9 +28,10 @@ class SplashContent extends StatelessWidget {
       ),
 
       Padding(
-        padding: EdgeInsets.only(top:15,left: 25.0,right: 25.0,bottom: 0),
-        child: Text(text,
-        textAlign: TextAlign.center,
+        padding: EdgeInsets.only(top: 15, left: 25.0, right: 25.0, bottom: 0),
+        child: Text(
+          text,
+          textAlign: TextAlign.center,
         ),
       ),
       //Spacer(),
