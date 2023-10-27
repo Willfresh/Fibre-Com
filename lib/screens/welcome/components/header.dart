@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../../../components/custom_suffix_icon.dart';
 import '../../profile/profile_screen.dart';
+import '../../size_config.dart';
 
 
 class Header extends StatelessWidget {
@@ -36,8 +37,8 @@ class Header extends StatelessWidget {
                           Text(
                             'FIBRE COM',
                             style: TextStyle(
-                              fontSize: 21,
-                              color: Colors.white,
+                              fontSize: 23,
+                              color: Color(0xFFFFFFFF),
                               fontWeight: FontWeight.bold,
                             ),
                           ),

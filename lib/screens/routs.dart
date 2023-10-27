@@ -11,7 +11,10 @@ import 'package:fibre_com/screens/welcome/components/profDetail/prosmallScreen.d
 import 'package:fibre_com/screens/welcome/components/resiDetail/Gold.dart';
 import 'package:fibre_com/screens/welcome/components/resiDetail/Platinium.dart';
 import 'package:fibre_com/screens/welcome/components/resiDetail/silver.dart';
+import 'package:fibre_com/screens/welcome/homeScreen.dart';
 import 'package:flutter/cupertino.dart';
+
+import '../main.dart';
 import '../models/client.dart';
 import '../components/succes_screen.dart';
 import '../models/payment/payement_screen.dart';
@@ -60,6 +63,8 @@ final Map<String , WidgetBuilder> routes ={
   WelcomeScreen.routeName: (context) => WelcomeScreen(),
   FormulaireScreen.routeName: (context) => FormulaireScreen(),
   Derangement.routeName: (context) => Derangement(),
+  HomeScreen.routeName: (context) => HomeScreen(),
   NotificationScreen.routeName: (context) => NotificationScreen(),
   ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
+
 };

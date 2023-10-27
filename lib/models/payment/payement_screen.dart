@@ -141,8 +141,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                 boxShadow: [
                                   BoxShadow(
                                     color: Colors.grey.withOpacity(0.4),
-                                    blurRadius: 3,
-                                    offset: Offset(0, 3),
+                                    //blurRadius: 3,
+                                    //offset: Offset(0, 3),
                                   ),
                                 ],
                               ),
@@ -175,8 +175,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                 boxShadow: [
                                   BoxShadow(
                                     color: Colors.grey.withOpacity(0.3),
-                                    blurRadius: 3,
-                                    offset: Offset(0, 3),
+                                    //blurRadius: 3,
+                                    //offset: Offset(0, 3),
                                   ),
                                 ],
                               ),
@@ -205,8 +205,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                 boxShadow: [
                                   BoxShadow(
                                     color: Colors.grey.withOpacity(0.3),
-                                    blurRadius: 3,
-                                    offset: Offset(0, 3),
+                                    //blurRadius: 3,
+                                    //offset: Offset(0, 3),
                                   ),
                                 ],
                               ),
@@ -243,8 +243,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.grey.withOpacity(0.3),
-                                blurRadius: 3,
-                                offset: Offset(0, 3),
+                                //blurRadius: 3,
+                                //offset: Offset(0, 3),
                               ),
                             ],
                           ),

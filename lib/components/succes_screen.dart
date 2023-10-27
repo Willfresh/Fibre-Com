@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/payment/payement_screen.dart';
 import '../screens/constants.dart ';
 import '../screens/size_config.dart';
-import '../screens/welcome/welcome_screen.dart';
+import '/screens/welcome/homeScreen.dart';
 
 class SuccessScreen extends StatefulWidget {
   static String routeName= "/success";
@@ -81,7 +81,7 @@ class _SuccessScreenState extends State<SuccessScreen> with SingleTickerProvider
                 Container(
                   alignment: Alignment.bottomCenter,
                   child: Text(
-                    "Souscription approuvée, à présent cliquez sur paiement pour effectuer le paiement de la quittance",
+                    "Souscription envoyée, vous pourrez proceder au paiement une fois que vous aurez une notification d'éligibilité",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 14,
@@ -95,7 +95,7 @@ class _SuccessScreenState extends State<SuccessScreen> with SingleTickerProvider
                   padding: const EdgeInsets.symmetric(horizontal: 90),
                   child: ElevatedButton(
                     onPressed: () {
-                        Navigator.pushNamed(context, PaymentScreen.routeName);
+                        Navigator.pushNamed(context, HomeScreen.routeName);
                       },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -104,7 +104,7 @@ class _SuccessScreenState extends State<SuccessScreen> with SingleTickerProvider
                       minimumSize: Size(double.infinity, 50),
                       primary: kPrimaryColor,
                     ),
-                    child:Text("PAIEMENT",style: TextStyle(
+                    child:Text("RETOUR",style: TextStyle(
                         fontSize: getProportionateScreenWidth(38),
                         color: Colors.white),),
                   ),

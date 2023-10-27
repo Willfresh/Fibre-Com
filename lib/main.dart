@@ -18,6 +18,7 @@ import 'package:fibre_com/screens/welcome/components/profDetail/prosmallScreen.d
 import 'package:fibre_com/screens/welcome/components/resiDetail/Gold.dart';
 import 'package:fibre_com/screens/welcome/components/resiDetail/Platinium.dart';
 import 'package:fibre_com/screens/welcome/components/resiDetail/silver.dart';
+import 'package:fibre_com/screens/welcome/homeScreen.dart';
 import 'package:fibre_com/screens/welcome/welcome_screen.dart';
 import 'package:fibre_com/service/FirebaseMessagingService.dart';
 import 'package:fibre_com/theme/theme_manager.dart';
@@ -110,6 +111,7 @@ class _MyAppState extends State<MyApp> {
               '/derangement': (context) => Derangement(),
               '/formulaire' : (context) => FormulaireScreen(),
               '/notification' : (context) => NotificationScreen(),
+              '/home' : (context) => HomeScreen(),
               '/forgot_password': (context) => ForgotPasswordScreen()
             },
           );
@@ -141,7 +143,7 @@ class WaitingScreenState extends State<WaitingScreen> with SingleTickerProviderS
       // Rediriger l'utilisateur vers la page d'accueil correspondante
       User? currentUser = FirebaseAuth.instance.currentUser;
       if (currentUser != null) {
-        Navigator.pushReplacementNamed(context, '/welcome');
+        Navigator.pushReplacementNamed(context, '/home');
       } else {
         Navigator.pushReplacementNamed(context, '/spllash');
       }

@@ -93,46 +93,89 @@ class _SignFormState extends State<SignForm>{
         ));
   }
 
-  TextFormField buildPasswordFormField() {
-    return TextFormField(
-      controller: _passwordController,
-      obscureText: !_isPasswordVisible, // Camouflage du mot de passe si _isPasswordVisible est false
-      decoration: InputDecoration(
-        labelText: 'Mot de passe',
-        suffixIcon: IconButton(
-          icon: Icon(_isPasswordVisible ? Icons.visibility_off : Icons.visibility), // Utilisation d'icônes différentes en fonction de la visibilité
-          onPressed: () {
-            setState(() {
-              _isPasswordVisible = !_isPasswordVisible; // Inversion de la visibilité du mot de passe lors de l'appui sur l'icône
-            });
-          },
-        ),
+  Container buildPasswordFormField() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white.withOpacity(0.8),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            //blurRadius: 3,
+            //offset: Offset(0, 3),
+          ),
+        ],
       ),
-      validator: (value) {
-        if (value!.isEmpty) {
-          return 'Veuillez entrer votre mot de passe';
-        }
-        return null;
-      },
+      child: TextFormField(
+        controller: _passwordController,
+        obscureText: !_isPasswordVisible,
+        decoration: InputDecoration(
+          labelText: 'Mot de passe',
+          suffixIcon: IconButton(
+            icon: Icon(_isPasswordVisible ? Icons.visibility_off : Icons.visibility),
+            onPressed: () {
+              setState(() {
+                _isPasswordVisible = !_isPasswordVisible;
+              });
+            },
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide.none,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide.none,
+          ),
+        ),
+        validator: (value) {
+          if (value!.isEmpty) {
+            return 'Veuillez entrer votre mot de passe';
+          }
+          return null;
+        },
+      ),
     );
   }
 
-  TextFormField buildEmailTextFormField() {
-    return TextFormField(
-      keyboardType: TextInputType.emailAddress,
-      controller: _emailController,
-      validator: (value){
-        if (value!.isEmpty) {
-          return 'L\'adresse e-mail est requise';
-        } else if (!value.contains('@')) {
-          return 'Adresse e-mail invalide';
-        }
-        return null;
-      },
-      decoration:  InputDecoration(
+  Container buildEmailTextFormField() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white.withOpacity(0.8),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            //blurRadius: 3,
+            //offset: Offset(0, 3),
+          ),
+        ],
+      ),
+      child: TextFormField(
+        keyboardType: TextInputType.emailAddress,
+        controller: _emailController,
+        validator: (value){
+          if (value!.isEmpty) {
+            return 'L\'adresse e-mail est requise';
+          } else if (!value.contains('@')) {
+            return 'Adresse e-mail invalide';
+          }
+          return null;
+        },
+        decoration:  InputDecoration(
           labelText: "Email",
-        suffixIcon: IconButton(
-          icon: Icon(Icons.email_outlined), onPressed: () {  }, // Utilisation d'icônes différentes en fonction de la visibilité
+          suffixIcon: IconButton(
+            icon: Icon(Icons.email_outlined),
+            onPressed: () {  },
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide.none,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide.none,
+          ),
         ),
       ),
     );

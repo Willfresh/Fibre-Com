@@ -18,12 +18,12 @@ class DefaultButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
         primary: kPrimaryColor,
-        minimumSize: Size(130, 50),
+        minimumSize: Size(180, 50),
       ),
       child: Text(
         text,
         style: TextStyle(
-            fontSize: getProportionateScreenWidth(38),
+            fontSize: getProportionateScreenWidth(35),
             color: Colors.white),
       ),
 

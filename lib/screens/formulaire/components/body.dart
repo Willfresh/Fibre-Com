@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../size_config.dart';
+import '../../welcome/welcome_screen.dart';
 import 'coordonnees_client.dart';
 
 class Body extends StatefulWidget {
@@ -15,21 +16,20 @@ class _BodyState extends State<Body> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Align(
-            alignment: Alignment.topLeft,
-            child: Padding(
-              padding: EdgeInsets.only(
-                top: MediaQuery.of(context).size.height * 0.08,
-                left: MediaQuery.of(context).size.height * 0.02,
-              ),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.pop(context); // Revenir à l'écran précédent
-                },
-                child: SvgPicture.asset(
-                  'assets/icons/arrow-left-svgrepo-com.svg',
-                ),
-              ),
+          Padding(
+            padding: EdgeInsets.only(
+              top: MediaQuery.of(context).size.height * 0.08,
+              left: MediaQuery.of(context).size.height * 0.02,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GestureDetector(
+                    onTap: (){
+                      Navigator.pushNamed(context, WelcomeScreen.routeName);},
+                    child: Icon(Icons.arrow_back_ios_sharp)),
+                Icon(Icons.more_vert)
+              ],
             ),
           ),
           SizedBox(height: SizeConfig.screenHeight! * 0.02,),

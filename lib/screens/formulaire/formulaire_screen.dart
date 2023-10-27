@@ -18,7 +18,7 @@ class _FormulaireScreenState extends State<FormulaireScreen> {
     SizeConfig().init(context);
     return Scaffold(
       body: Body(),
-      bottomNavigationBar: NavigationBar(context),
+
     );
   }
 }

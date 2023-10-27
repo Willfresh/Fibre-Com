@@ -15,12 +15,12 @@ class NoAcountText extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text("Vous n'avez pas de compte ?",
-          style: TextStyle(fontSize: getProportionateScreenWidth(28)),
+          style: TextStyle(fontSize: getProportionateScreenWidth(30)),
         ),
         GestureDetector(
           onTap: ()=> Navigator.pushNamed(context, SignUpScreen.routeName),
           child: Text("Inscrivez vous",
-            style: TextStyle(fontSize: getProportionateScreenWidth(28),
+            style: TextStyle(fontSize: getProportionateScreenWidth(30),
                 color: kPrimaryColor),
           ),
         )

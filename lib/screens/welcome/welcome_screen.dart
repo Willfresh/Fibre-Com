@@ -20,7 +20,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>{
     return Scaffold(
       backgroundColor: Colors.grey[100],
       body: Body(),
-      bottomNavigationBar: NavigationBar(context),
     );
 
   }

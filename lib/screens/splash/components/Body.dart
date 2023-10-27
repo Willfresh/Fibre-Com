@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:fibre_com/components/default_button.dart';
 import 'package:fibre_com/screens/constants.dart';
@@ -7,6 +8,7 @@ import 'package:fibre_com/screens/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:fibre_com/screens/splash/components/splash_content.dart';
 import 'package:fibre_com/screens/constants.dart';
+import 'package:rive/rive.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -67,54 +69,69 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: SizedBox(
-      width: double.infinity,
-      child: Column(
-        children: <Widget>[
-          Expanded(
-            flex: 3,
-            child: PageView.builder(
-              controller: _pageController,
-              itemCount: splashData.length,
-              itemBuilder: (context, index) => SplashContent(
-                text: splashData[index]["text"]!,
-                image: splashData[index]["image"]!,
-              ),
-              onPageChanged: (index) {
-                setState(() {
-                  currentPage = index;
-                });
-              },
-            ),
+    return Scaffold(
+      backgroundColor: Colors.yellow[100],
+      body: Stack(
+        children: [
+          RiveAnimation.asset("assets/riveAssets/splash.riv"),
+          Positioned.fill(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX:25, sigmaY:25),
+              child: SizedBox(),
+            )
           ),
-          Expanded(
-              flex: 1,
-              child: Column(
-                children: <Widget>[
-                  Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      splashData.length,
-                      (index) => buildDot(index: index),
+          SafeArea(
+              child: SizedBox(
+                width: double.infinity,
+                child: Column(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 3,
+                      child: PageView.builder(
+                        controller: _pageController,
+                        itemCount: splashData.length,
+                        itemBuilder: (context, index) => SplashContent(
+                          text: splashData[index]["text"]!,
+                          image: splashData[index]["image"]!,
+                        ),
+                        onPageChanged: (index) {
+                          setState(() {
+                            currentPage = index;
+                          });
+                        },
+                      ),
                     ),
-                  ),
-                  Spacer(
-                    //flex: 2,
-                  ),
-                  DefaultButton(
-                    text: "Continuer",
-                    press: () {
-                      Navigator.pushNamed(context, SignInScreen.routeName);
-                    },
-                  ),
-                  Spacer(),
-                ],
-              ))
+                    Expanded(
+                        flex: 1,
+                        child: Column(
+                          children: <Widget>[
+                            Spacer(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: List.generate(
+                                splashData.length,
+                                    (index) => buildDot(index: index),
+                              ),
+                            ),
+                            Spacer(
+                              //flex: 2,
+                            ),
+                            DefaultButton(
+                              text: "Continuer",
+                              press: () {
+                                Navigator.pushNamed(context, SignInScreen.routeName);
+                              },
+                            ),
+                            Spacer(),
+                          ],
+                        ))
+                  ],
+                ),
+              )
+          )
         ],
       ),
-    ));
+    );
   }
 
   AnimatedContainer buildDot({required int index}) {

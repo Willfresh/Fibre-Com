@@ -27,24 +27,25 @@ class _BodyState extends State<Body> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  //SizedBox(height: SizeConfig.screenHeight! * 0.04,),
+                  SizedBox(height: SizeConfig.screenHeight! * 0.06,),
+                  Text("Connexion",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: getProportionateScreenWidth(60),
+                      fontWeight: FontWeight.bold,
+                    ),),
+                  SizedBox(height: SizeConfig.screenHeight! * 0.02,),
+                  Text("Connectez vous avec votre email et mot de passe",
+                    textAlign: TextAlign.center,),
+                  //SizedBox(height: SizeConfig.screenHeight! * 0.08,),
                   Container(
                     child: Image.asset(
                       'assets/images/workplace.png',
                       fit: BoxFit.cover,
-                      height: 250,
+                      height: 220,
                     ),
                   ),
                   //SizedBox(height: SizeConfig.screenHeight! * 0.04,),
-                  Text("Connexion",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: getProportionateScreenWidth(60),
-                    fontWeight: FontWeight.bold,
-                  ),),
-                  Text("Connectez vous avec votre email et mot de passe",
-                  textAlign: TextAlign.center,),
-                  SizedBox(height: SizeConfig.screenHeight! * 0.08,),
                   SignForm(),
                   SizedBox(height: SizeConfig.screenHeight! * 0.08,),
                   Row(

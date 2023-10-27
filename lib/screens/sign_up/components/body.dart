@@ -84,7 +84,7 @@ class _BodyState extends State<Body> {
                 child: Column(
                   children: [
                     SizedBox(height: SizeConfig.screenHeight! * 0.01,),
-                    Text("Creer un compte",
+                    Text("Créer un compte",
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: getProportionateScreenWidth(60),

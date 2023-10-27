@@ -1,4 +1,5 @@
 import 'package:fibre_com/screens/sign_up/components/body.dart';
+import 'package:fibre_com/screens/welcome/homeScreen.dart';
 import 'package:fibre_com/screens/welcome/welcome_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class SignUpScreen extends StatelessWidget{
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return WelcomeScreen();
+          return HomeScreen();
         } else {
           return Theme(
               data: Theme.of(context).copyWith(

@@ -7,7 +7,7 @@ import 'package:fibre_com/screens/size_config.dart';
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.yellow[100],
+      //backgroundColor: Colors.yellow[100],
       body: Body(),
     );
   }

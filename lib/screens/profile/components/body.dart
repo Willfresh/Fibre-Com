@@ -5,6 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
+import '../../../main.dart';
+import '../../../models/YuserState.dart';
 import '../../../models/payment/payement_screen.dart';
 import '../../../theme/theme_constant.dart';
 import '../../formulaire/components/derangement.dart';
@@ -12,7 +14,7 @@ import '../../notifications/notifications_screen.dart';
 import 'package:fibre_com/theme/theme_constant.dart';
 import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
 
-import '../../welcome/welcome_screen.dart';
+import '../components/modifScreen.dart';
 import '../profile_screen.dart';
 
 
@@ -27,7 +29,7 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xFFEFF3FF),
+        color: Colors.grey[100],
       ),
       child: SingleChildScrollView(
         child: Column(
@@ -51,6 +53,38 @@ class _BodyState extends State<Body> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                      child: TextButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          primary: Color(0xFFF5F6F9),
+                          minimumSize: Size(double.infinity, 60),
+                        ),
+                        onPressed: () async {
+                          final User? user = FirebaseAuth.instance.currentUser;
+                          if (user != null) {
+                            final userId = user.uid;
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ModifScreen(userId: userId),
+                              ),
+                            );
+                          }
+                        },
+                        child: Row(
+                          children: [
+                            SvgPicture.asset("assets/icons/user-profile-filled-svgrepo-com.svg", width: 22, color: Colors.red),
+                            SizedBox(width: 20),
+                            Expanded(child: Text("Modifier le profil", style: TextStyle(color: Colors.black))),
+                            Icon(Icons.arrow_forward_ios, color: Colors.red),
+                          ],
+                        ),
+                      ),
+                    ),
                     ProfileMenu(
                       icon: "assets/icons/notification-svgrepo-com.svg",
                       text: "Notification",

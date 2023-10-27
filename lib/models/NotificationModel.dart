@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-class NotificationModel {
+class MyNotification {
   final String title;
-  final String message;
-  final DateTime date;
+  final String body;
 
-  NotificationModel({
-    required this.title,
-    required this.message,
-    required this.date,
-  });
+  MyNotification({required this.title, required this.body});
 }

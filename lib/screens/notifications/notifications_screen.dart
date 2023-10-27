@@ -1,8 +1,6 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
-import '../../models/NotificationModel.dart';
-import '../formulaire/formulaire_screen.dart';
-import '../welcome/welcome_screen.dart';
+import 'package:intl/intl.dart';
 
 class NotificationScreen extends StatefulWidget {
   static String routeName = "/notification";
@@ -12,121 +10,102 @@ class NotificationScreen extends StatefulWidget {
 }
 
 class _NotificationScreenState extends State<NotificationScreen> {
+  List<RemoteMessage> _messages = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    FirebaseMessaging.instance.requestPermission();
+
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      setState(() {
+        _messages.add(message);
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      body: Container(
-        child: Padding(
-          padding: EdgeInsets.only(top: 55,bottom: 5,right: 20,left: 20),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Icon(Icons.arrow_back_ios_sharp),
-                  Text(
-                    "Notifications",
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.black,
-                    ),
-                  ),
-                  Icon(Icons.more_vert)
-                ],
+      backgroundColor: Colors.grey[100],
+      appBar: AppBar(
+        backgroundColor: Colors.grey[100],
+        centerTitle: true,
+        elevation: 0.8,
+        title: Text(
+          'Notifications',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+      ),
+      body: ListView.builder(
+        itemCount: _messages.length,
+        itemBuilder: (context, index) {
+          final RemoteMessage message = _messages[index];
+          final DateTime sentTime = message.sentTime ?? DateTime.now();
+
+          /*// À l'intérieur de la méthode build() dans votre widget _NotificationScreenState
+          final DateTime dateTime = DateTime.fromMicrosecondsSinceEpoch(
+            ((message.sentTime ?? DateTime.now().millisecondsSinceEpoch) as int) * 1000,
+          );
+          final String formattedDateTime = DateFormat('dd/MM/yyyy HH:mm').format(dateTime);*/
+
+
+
+          return Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
               ),
-              Center(
-                child: Text(
-                  "Pas de notifications",
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.black,
+              child: Dismissible(
+                key: Key(message.hashCode.toString()),
+                onDismissed: (direction) {
+                  setState(() {
+                    _messages.removeAt(index);
+                  });
+                },
+                background: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.red,
+                  ),
+                  alignment: Alignment.centerRight,
+                  padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+                  child: Icon(
+                    Icons.delete,
+                    color: Colors.white,
                   ),
                 ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ListTile(
+                      title: Text(message.notification?.title ?? 'Aucun titre'),
+                      subtitle: Text(message.notification?.body ?? 'Aucun corps'),
+                      onTap: () {
+                        // ...
+                      },
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        DateFormat('dd/MM/yyyy hh:mm').format(sentTime.toLocal()),
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 12.0,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ],
-          ),
-        )
+            ),
+          );
+        },
       ),
-      bottomNavigationBar: NavigationBar(context),
     );
   }
 }
-
-
-Widget NavigationBar(BuildContext context) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-    child: Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
-        color: Colors.white.withOpacity(0.8),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.4),
-            blurRadius: 10,
-            offset: Offset(0, 10),
-          ),
-        ],
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
-        child: GNav(
-          selectedIndex: 2,
-          activeColor: Colors.yellow,
-          rippleColor: Colors.black, // Couleur pour les icônes désactivées
-          tabBackgroundColor: Colors.grey.shade600,
-          color: Colors.black,
-          backgroundColor: Colors.transparent,
-          gap: 8,
-          padding: EdgeInsets.all(3),
-          tabs: [
-            GButton(
-              icon: Icons.home,
-              text: 'Offre',
-              iconSize: 18,
-              textStyle: TextStyle(
-                fontSize: 11,
-                fontWeight: FontWeight.bold,
-                color: Colors.yellow,
-              ),
-              onPressed: () =>
-                  Navigator.pushNamed(context, WelcomeScreen.routeName),
-            ),
-            GButton(
-              icon: Icons.edit_note,
-              text: 'Formulaire',
-              iconSize: 18,
-              textStyle: TextStyle(
-                fontSize: 11,
-                fontWeight: FontWeight.bold,
-                color: Colors.yellow,
-              ),
-              onPressed: () =>
-                  Navigator.pushNamed(context, FormulaireScreen.routeName),
-            ),
-            GButton(
-              icon: Icons.notifications,
-              iconSize: 18,
-              text: 'Notifications',
-              textStyle: TextStyle(
-                fontSize: 11,
-                fontWeight: FontWeight.bold,
-                color: Colors.yellow,
-              ),
-              onPressed: () =>
-                  Navigator.pushNamed(context, NotificationScreen.routeName),
-            ),
-          ],
-        ),
-      ),
-    ),
-  );
-}
-
-
-
-
-
-

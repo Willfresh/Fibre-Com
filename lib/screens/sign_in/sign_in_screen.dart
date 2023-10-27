@@ -1,4 +1,5 @@
 import 'package:fibre_com/screens/sign_in/components/body.dart';
+import 'package:fibre_com/screens/welcome/homeScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class SignInScreen extends StatelessWidget{
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return WelcomeScreen();
+            return HomeScreen();
           } else {
             return Theme(
                 data: Theme.of(context).copyWith(

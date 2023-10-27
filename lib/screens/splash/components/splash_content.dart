@@ -15,20 +15,23 @@ class SplashContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
-      Padding(
-        padding: EdgeInsets.only(top: 20.0),
-        child: Text(
-          "FIBRE COM",
-          style: TextStyle(
-            fontSize: getProportionateScreenWidth(50),
-            color: kPrimaryColor,
-            fontWeight: FontWeight.bold,
-          ),
+      Image.asset(
+        'assets/images/logoFibrePlan de travail.png',
+        height: getProportionateScreenWidth(200),
+        width: getProportionateScreenWidth(200),
+        //fit: BoxFit.cover,
+      ),
+      Text(
+        "FIBRE COM",
+        style: TextStyle(
+          fontSize: getProportionateScreenWidth(48),
+          color: Colors.orange,
+          fontWeight: FontWeight.bold,
         ),
       ),
 
       Padding(
-        padding: EdgeInsets.only(top: 15, left: 25.0, right: 25.0, bottom: 0),
+        padding: EdgeInsets.only(top: 10, left: 25.0, right: 25.0, bottom: 0),
         child: Text(
           text,
           textAlign: TextAlign.center,

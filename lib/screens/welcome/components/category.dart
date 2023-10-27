@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../components/default_button.dart';
 import '../../formulaire/formulaire_screen.dart';
 import '../../size_config.dart';
+import '../OfferedCard.dart';
 import 'entreprise.dart';
 import 'professionel.dart';
 import 'resident.dart';
@@ -18,15 +19,7 @@ class _CategoryState extends State<Category> {
     // TODO: implement build
     return Container(
       color: Colors.grey[100],
-        //key: _formKey,
-        //height: 470,
-        /*decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-          )
-        ),*/
+
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -45,6 +38,13 @@ class _CategoryState extends State<Category> {
                   ),
                   Resident(),
                 ]
+              ),
+            ),
+            Transform.translate(
+              offset: Offset(0,-50),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+                child: OfferedCard(),
               ),
             ),
             Transform.translate(

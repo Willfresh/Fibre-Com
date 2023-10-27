@@ -61,23 +61,7 @@ class _CoordonneesClientState extends State<CoordonneesClient> {
                 // Nom et prénom sur la même ligne
                 Row(
                   children: [
-                    /*Align(
-                      alignment: Alignment.topLeft,
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height * 0.05,
-                          left: MediaQuery.of(context).size.height * 0.02,
-                        ),
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context); // Revenir à l'écran précédent
-                          },
-                          child: SvgPicture.asset(
-                            'assets/icons/arrow-left-svgrepo-com.svg',
-                          ),
-                        ),
-                      ),
-                    ),*/
+
                     Expanded(
                       child: Container(
                         decoration: BoxDecoration(
@@ -86,8 +70,8 @@ class _CoordonneesClientState extends State<CoordonneesClient> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.3),
-                              blurRadius: 3,
-                              offset: Offset(0, 3),
+                              //blurRadius: 3,
+                              //offset: Offset(0, 3),
                             ),
                           ],
                         ),
@@ -125,8 +109,8 @@ class _CoordonneesClientState extends State<CoordonneesClient> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.3),
-                              blurRadius: 3,
-                              offset: Offset(0, 3),
+                              //blurRadius: 3,
+                              //offset: Offset(0, 3),
                             ),
                           ],
                         ),
@@ -165,8 +149,8 @@ class _CoordonneesClientState extends State<CoordonneesClient> {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.3),
-                        blurRadius:3,
-                        offset: Offset(0, 3),
+                        //blurRadius:3,
+                        //offset: Offset(0, 3),
                       ),
                     ],
                   ),
@@ -216,8 +200,8 @@ class _CoordonneesClientState extends State<CoordonneesClient> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.3),
-                              blurRadius: 3,
-                              offset: Offset(0, 3),
+                              //blurRadius: 3,
+                              //offset: Offset(0, 3),
                             ),
                           ],
                         ),
@@ -254,8 +238,8 @@ class _CoordonneesClientState extends State<CoordonneesClient> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.3),
-                              blurRadius: 3,
-                              offset: Offset(0, 3),
+                              //blurRadius: 3,
+                              //offset: Offset(0, 3),
                             ),
                           ],
                         ),
@@ -297,8 +281,8 @@ class _CoordonneesClientState extends State<CoordonneesClient> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.3),
-                              blurRadius: 3,
-                              offset: Offset(0, 3),
+                              //blurRadius: 3,
+                              //offset: Offset(0, 3),
                             ),
                           ],
                         ),
@@ -337,8 +321,8 @@ class _CoordonneesClientState extends State<CoordonneesClient> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.3),
-                              blurRadius: 3,
-                              offset: Offset(0, 3),
+                              //blurRadius: 3,
+                              //offset: Offset(0, 3),
                             ),
                           ],
                         ),
@@ -427,8 +411,8 @@ class _CoordonneesClientState extends State<CoordonneesClient> {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.3),
-                        blurRadius: 3,
-                        offset: Offset(0, 3),
+                        //blurRadius: 3,
+                        //offset: Offset(0, 3),
                       ),
                     ],
                   ),
@@ -464,8 +448,8 @@ class _CoordonneesClientState extends State<CoordonneesClient> {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.3),
-                        blurRadius: 3,
-                        offset: Offset(0, 3),
+                        //blurRadius: 3,
+                        //offset: Offset(0, 3),
                       ),
                     ],
                   ),
@@ -492,8 +476,8 @@ class _CoordonneesClientState extends State<CoordonneesClient> {
                         borderSide: BorderSide.none,
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide.none,
+                        //borderRadius: BorderRadius.circular(10),
+                        //borderSide: BorderSide.none,
                       ),
                     ),
                     validator: (value) {

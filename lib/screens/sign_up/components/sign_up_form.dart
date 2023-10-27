@@ -47,7 +47,7 @@ class _SignUpFormState extends State<SignUpForm>{
 
       // Redirection vers une autre page après l'inscription réussie
       Navigator.push(
-        context,
+        context, 
         MaterialPageRoute(builder: (context) => WelcomeScreen()),
       );
     } else {
@@ -119,100 +119,209 @@ class _SignUpFormState extends State<SignUpForm>{
   }
 
 
-  TextFormField buildPasswordFormField() {
-    return TextFormField(
-      controller: _passwordController,
-      obscureText: !_isPasswordVisible, // Camouflage du mot de passe si _isPasswordVisible est false
-      decoration: InputDecoration(
-        labelText: 'Mot de passe',
-        suffixIcon: IconButton(
-          icon: Icon(_isPasswordVisible ? Icons.visibility_off : Icons.visibility), // Utilisation d'icônes différentes en fonction de la visibilité
-          onPressed: () {
-            setState(() {
-              _isPasswordVisible = !_isPasswordVisible; // Inversion de la visibilité du mot de passe lors de l'appui sur l'icône
-            });
-          },
-        ),
+  Container buildPasswordFormField() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white.withOpacity(0.8),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            //blurRadius: 3,
+            //offset: Offset(0, 3),
+          ),
+        ],
       ),
-      validator: (value) {
-        if (value!.isEmpty) {
-          return 'Veuillez entrer votre mot de passe';
-        }
-        return null;
-      },
+      child: TextFormField(
+        controller: _passwordController,
+        obscureText: !_isPasswordVisible,
+        decoration: InputDecoration(
+          labelText: 'Mot de passe',
+          suffixIcon: IconButton(
+            icon: Icon(_isPasswordVisible ? Icons.visibility_off : Icons.visibility),
+            onPressed: () {
+              setState(() {
+                _isPasswordVisible = !_isPasswordVisible;
+              });
+            },
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide.none,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide.none,
+          ),
+        ),
+        validator: (value) {
+          if (value!.isEmpty) {
+            return 'Veuillez entrer votre mot de passe';
+          }
+          return null;
+        },
+      ),
     );
   }
-  TextFormField buildEmailTextFormField() {
-    return TextFormField(
-      keyboardType: TextInputType.emailAddress,
-      controller: _emailController,
-      validator: (value){
-        if (value!.isEmpty) {
-          return 'L\'adresse e-mail est requise';
-        } else if (!value.contains('@')) {
-          return 'Adresse e-mail invalide';
-        }
-        return null;
-      },
-      decoration:  InputDecoration(
+  Container buildEmailTextFormField() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white.withOpacity(0.8),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            //blurRadius: 3,
+            //offset: Offset(0, 3),
+          ),
+        ],
+      ),
+      child: TextFormField(
+        keyboardType: TextInputType.emailAddress,
+        controller: _emailController,
+        validator: (value){
+          if (value!.isEmpty) {
+            return 'L\'adresse e-mail est requise';
+          } else if (!value.contains('@')) {
+            return 'Adresse e-mail invalide';
+          }
+          return null;
+        },
+        decoration: InputDecoration(
           labelText: "Email",
-        suffixIcon: IconButton(
-          icon: Icon(Icons.email_outlined), onPressed: () {  }, // Utilisation d'icônes différentes en fonction de la visibilité
+          suffixIcon: IconButton(
+            icon: Icon(Icons.email_outlined),
+            onPressed: () {},
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide.none,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide.none,
+          ),
         ),
       ),
     );
   }
-  TextFormField buildLNameFormField() {
-    return TextFormField(
-      keyboardType: TextInputType.text,
-      controller: _nomController,
-      validator: (value){
-        if (value == null || value.isEmpty){
-          return "Veuillez entrer votre nom";
-        }
-        return null;
-      },
-      decoration:  InputDecoration(
+  Container buildLNameFormField() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white.withOpacity(0.8),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            //blurRadius: 3,
+            //offset: Offset(0, 3),
+          ),
+        ],
+      ),
+      child: TextFormField(
+        keyboardType: TextInputType.text,
+        controller: _nomController,
+        validator: (value){
+          if (value == null || value.isEmpty){
+            return "Veuillez entrer votre nom";
+          }
+          return null;
+        },
+        decoration:  InputDecoration(
           labelText: "Nom",
           suffixIcon: IconButton(
-            icon: Icon(Icons.person), onPressed: () {  }, // Utilisation d'icônes différentes en fonction de la visibilité
+            icon: Icon(Icons.person),
+            onPressed: () {  },
           ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide.none,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide.none,
+          ),
+        ),
       ),
     );
   }
 
-  TextFormField buildNameFormField() {
-    return TextFormField(
-      keyboardType: TextInputType.text,
-      controller: _prenomController,
-      validator: (value){
-        if (value == null || value.isEmpty){
-          return "Le prénom est requis";
-        }
-        return null;
-      },
-      decoration:  InputDecoration(
+  Container buildNameFormField() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white.withOpacity(0.8),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            //blurRadius: 3,
+            //offset: Offset(0, 3),
+          ),
+        ],
+      ),
+      child: TextFormField(
+        keyboardType: TextInputType.text,
+        controller: _prenomController,
+        validator: (value){
+          if (value == null || value.isEmpty){
+            return "Veuillez entrer votre prenom";
+          }
+          return null;
+        },
+        decoration:  InputDecoration(
           labelText: "Prénom",
-        suffixIcon: IconButton(
-          icon: Icon(Icons.person), onPressed: () {  },
+          suffixIcon: IconButton(
+            icon: Icon(Icons.person),
+            onPressed: () {  },
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide.none,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide.none,
+          ),
         ),
       ),
     );
   }
-  TextFormField buildphoneFormField() {
-    return TextFormField(
-      keyboardType: TextInputType.number,
-      controller: _phoneNumberController,
-      validator: (value){
-        if (value == null || value.isEmpty){
-          return "Le numéro est requis";
-        }
-        return null;
-      },
-      decoration:  InputDecoration(
+  Container buildphoneFormField() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white.withOpacity(0.8),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            //blurRadius: 3,
+            //offset: Offset(0, 3),
+          ),
+        ],
+      ),
+      child: TextFormField(
+        keyboardType: TextInputType.number,
+        controller: _phoneNumberController,
+        validator: (value){
+          if (value == null || value.isEmpty){
+            return "Le numéro est requis";
+          }
+          return null;
+        },
+        decoration: InputDecoration(
           labelText: "Numéro",
-        suffixIcon: IconButton(
-          icon: Icon(Icons.phone), onPressed: () {  }, // Utilisation d'icônes différentes en fonction de la visibilité
+          suffixIcon: IconButton(
+            icon: Icon(Icons.phone),
+            onPressed: () {},
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide.none,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide.none,
+          ),
         ),
       ),
     );

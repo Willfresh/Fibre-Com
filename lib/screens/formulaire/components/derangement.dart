@@ -32,6 +32,8 @@ class _DerangementState extends State<Derangement>{
         // Récupération des valeurs des champs
         String nom = _nomController.text;
         String numero = _numeroController.text;
+        String prenom = _prenomController.text;
+        String numeroLigne = _numeroLigneController.text;
         String message = _messageController.text;
 
         try {
@@ -41,6 +43,8 @@ class _DerangementState extends State<Derangement>{
             'nom': nom,
             'numero': numero,
             'message': message,
+            'prenom': prenom,
+            'numeroLigne': numeroLigne,
           });
 
           // Succès de l'enregistrement
@@ -52,6 +56,8 @@ class _DerangementState extends State<Derangement>{
           _nomController.clear();
           _numeroController.clear();
           _messageController.clear();
+          _prenomController.clear();
+          _numeroLigneController.clear();
         } catch (e) {
           // Erreur lors de l'enregistrement
           ScaffoldMessenger.of(context).showSnackBar(
@@ -76,6 +82,8 @@ class _DerangementState extends State<Derangement>{
   final _nomController = TextEditingController();
   final _numeroController = TextEditingController();
   final _messageController = TextEditingController();
+  final _numeroLigneController = TextEditingController();
+  final _prenomController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -148,8 +156,8 @@ class _DerangementState extends State<Derangement>{
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.3),
-                              blurRadius: 3,
-                              offset: Offset(0, 3),
+                              //blurRadius: 3,
+                              //offset: Offset(0, 3),
                             ),
                           ],
                         ),
@@ -185,8 +193,45 @@ class _DerangementState extends State<Derangement>{
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.3),
-                              blurRadius: 3,
-                              offset: Offset(0, 3),
+                              //blurRadius: 3,
+                              //offset: Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: TextFormField(
+                          controller: _prenomController,
+                          style: TextStyle(color: Colors.black),
+                          decoration: InputDecoration(
+                            labelText: 'Prenom',
+                            //labelStyle: TextStyle(color: Colors.black),
+                            prefixIcon: Icon(Icons.account_circle_rounded, /*color: Colors.black*/),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide.none,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide.none,
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Veuillez saisir votre Prenom';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white.withOpacity(0.8),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.3),
+                              //blurRadius: 3,
+                              //offset: Offset(0, 3),
                             ),
                           ],
                         ),
@@ -223,8 +268,46 @@ class _DerangementState extends State<Derangement>{
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.3),
-                              blurRadius: 3,
-                              offset: Offset(0, 3),
+                              //blurRadius: 3,
+                              //offset: Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: TextFormField(
+                          keyboardType: TextInputType.number,
+                          controller: _numeroLigneController,
+                          style: TextStyle(color: Colors.black),
+                          decoration: InputDecoration(
+                            labelText: 'Numéro de ligne',
+                            //labelStyle: TextStyle(color: Colors.black),
+                            prefixIcon: Icon(Icons.phone, /*color: Colors.black*/),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide.none,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide.none,
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Veuillez saisir votre numéro de votre ligne';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white.withOpacity(0.8),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.3),
+                              //blurRadius: 3,
+                              //offset: Offset(0, 3),
                             ),
                           ],
                         ),
